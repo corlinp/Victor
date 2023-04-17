@@ -30,9 +30,9 @@ If you're storing more than 100K vectors, well you should probably be using some
 
 ## API
 
-```
-PUT or POST /add
+`PUT /add`
 
+```
 {
     "id": "1",
     "vector": [1, 2, 3, 4, 5],
@@ -40,17 +40,17 @@ PUT or POST /add
 }
 ```
 
+`POST /search`
 
 ```
-POST /search
-
 {
     "vector": [1, 2, 3, 4, 5],
     "num_results": 10,
 }
+```
 
 returns
-
+```
 {
     "results": [
         {
@@ -62,16 +62,13 @@ returns
 }
 ```
 
+`GET /get/1`
 
 ```
-GET /get/1
-
 Hello, World!
 ```
 
-```
-DELETE /delete/1
-```
+`DELETE /delete/1`
 
 ## Python Client
 
