@@ -51,15 +51,13 @@ If you're storing more than 100K vectors, well you should probably be using some
 
 returns
 ```
-{
-    "results": [
-        {
-            "id": "1",
-            "distance": 0,
-            "data": "Hello, World!",
-        },
-    ],
-}
+[
+    {
+        "id": "1",
+        "distance": 0,
+        "data": "Hello, World!",
+    },
+]
 ```
 
 `GET /get/1`
