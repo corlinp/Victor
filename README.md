@@ -1,14 +1,12 @@
 # Victor
 
-> What's our vector, Victor?
+> "What's our vector, Victor?"
 
 Victor is a dead-simple Vector database written in Go, optimized for the 1536-length vectors returned by the OpenAI embeddings API.
 
-This is for people who want to play around with using vector stores for LLM memory but don't want the complexity of standing up something like Faiss, Milvus etc.
+Victor is for people who want to play around with using vector stores for LLM memory and want something slightly better than an array of JSON objects,but don't want the complexity of standing up a real vector DB like Faiss, Milvus etc. Victor is a toy and NOT a production-ready database.
 
-Victor uses Badger to store data and vectors on disk in an efficient protobuf format. The index is in-memory and built from disk on startup. Victor is a toy and NOT a production-ready database.
-
-Victor uses dot products to find similarity, and each search scans the entire index - so there's nothing too fancy going on here. It's just slightly better than loading all your vectors into a python array and saving it to JSON.
+Victor uses Badger to store data and vectors on disk in an efficient protobuf format. The index is an in-memory B-tree built quickly from disk on startup. Victor uses dot products to find similarity, and each search scans the entire index - no fancy heuristic or clustering algorithms here - but it should be fast enough for your hobby project.
 
 ## Usage
 
@@ -20,12 +18,12 @@ victor --data-dir /tmp/victor --host localhost:6723
 ## Real-world performance on my laptop
 
 For a database with 100K vectors:
-- Load all vectors in from a Python program via /add: `230 sec`
-- Restore index from disk (on startup): `1.5 sec`
+- Loading all vectors from a Python program via /add: `230 sec`
+- Restoring index from disk (on startup): `1.5 sec`
 - Memory use: `2.8 GB`
 - Avg. call to /search: `0.2 sec`
 
-If you're storing more than 100K vectors, well you should probably be using something else.
+If you're storing more than 100K vectors, you should probably consider using something else.
 
 
 ## API
