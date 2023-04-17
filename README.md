@@ -35,7 +35,7 @@ If you're storing more than 100K vectors, well you should probably be using some
 ```
 {
     "id": "1",
-    "vector": [1, 2, 3, 4, 5],
+    "vector": [1, 2, 3, ..., 1536],
     "data": "Hello, World!",
 }
 ```
@@ -44,8 +44,8 @@ If you're storing more than 100K vectors, well you should probably be using some
 
 ```
 {
-    "vector": [1, 2, 3, 4, 5],
-    "num_results": 10,
+    "vector": [1, 2, 3, ..., 1536],
+    "count": 10,
 }
 ```
 
