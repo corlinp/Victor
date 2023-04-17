@@ -10,6 +10,13 @@ Victor uses Badger to store data and vectors on disk in an efficient protobuf fo
 
 Victor uses dot products to find similarity, and each search scans the entire index - so there's nothing too fancy going on here. It's just slightly better than loading all your vectors into a python array and saving it to JSON.
 
+## Usage
+
+```
+go install github.com/corlinp/victor
+victor --data-dir /tmp/victor --host localhost:6723
+```
+
 ## Real-world performance on my laptop
 
 For a database with 100K vectors:
@@ -19,13 +26,6 @@ For a database with 100K vectors:
 - Avg. call to /search: `0.2 sec`
 
 If you're storing more than 100K vectors, well you should probably be using something else.
-
-## Usage
-
-```
-go install github.com/corlinp/victor
-victor --data-dir /tmp/victor --host localhost:6723
-```
 
 
 ## API
