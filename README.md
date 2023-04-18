@@ -11,8 +11,14 @@ Victor uses Badger to store data and vectors on disk in an efficient protobuf fo
 ## Usage
 
 ```
-go install github.com/corlinp/victor
+go install github.com/corlinp/victor@latest
 victor --data-dir /tmp/victor --host localhost:6723
+```
+
+Or use Docker:
+
+```
+docker run -p 6723:6723 -v /tmp/victor:/etc/victor-data corlinp/victor
 ```
 
 ## Real-world performance on my laptop
@@ -78,7 +84,7 @@ class Victor:
     def __init__(self, base_url):
         self.base_url = base_url
 
-    def add(self, id, vector, data):
+    def add(self, id, vector, data=None):
         url = f'{self.base_url}/add'
         payload = {
             'id': id,
@@ -87,7 +93,6 @@ class Victor:
         }
         response = requests.put(url, json=payload)
         response.raise_for_status()
-        return response
 
     def search(self, vector, num_results):
         url = f'{self.base_url}/search'
@@ -110,5 +115,4 @@ class Victor:
         url = f'{self.base_url}/delete/{id}'
         response = requests.delete(url)
         response.raise_for_status()
-        return response
 ```
